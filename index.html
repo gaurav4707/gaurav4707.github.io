@@ -625,7 +625,7 @@
 
     .skills-layout {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 260px 1fr;
       gap: 60px;
     }
 
@@ -637,66 +637,91 @@
     }
 
     .skills-categories {
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .skill-category {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+    }
+
+    .skill-category:hover {
+      border-color: rgba(74, 222, 128, 0.25);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
     }
 
     .skill-category h3 {
       font-size: 0.8125rem;
       font-weight: 600;
       color: var(--green);
-      margin-bottom: 20px;
-      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: var(--font);
+      text-align: center;
     }
 
-    .skill-icons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-item {
+    .skill-badges {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 8px;
-      padding: 16px 8px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      transition: transform 0.3s var(--ease-spring), border-color 0.25s ease, background 0.25s ease, box-shadow 0.3s ease;
-      will-change: transform;
     }
 
-    .skill-item:hover {
-      border-color: rgba(74, 222, 128, 0.2);
-      background: var(--bg-card-hover);
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    .skill-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      font-size: 0.78125rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.2s var(--ease-spring);
+      cursor: default;
     }
 
-    .skill-item img {
-      width: 32px;
-      height: 32px;
+    .skill-badge:hover {
+      border-color: var(--green);
+      background: var(--green-dim);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(74, 222, 128, 0.12);
+    }
+
+    .skill-badge img {
+      width: 16px;
+      height: 16px;
       object-fit: contain;
-      transition: transform 0.3s var(--ease-spring);
+      transition: transform 0.2s ease;
     }
 
-    .skill-item:hover img {
+    .skill-badge:hover img {
       transform: scale(1.15);
     }
 
-    .skill-item .icon-invert {
+    .skill-badge .icon-invert {
       filter: invert(1) brightness(2);
     }
 
-    .skill-item span {
-      font-size: 0.6875rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-align: center;
-      white-space: nowrap;
+    .badge-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: var(--green);
+      box-shadow: 0 0 6px var(--green);
+      display: inline-block;
+      flex-shrink: 0;
     }
 
     /* ============================================
@@ -1167,6 +1192,10 @@
       .skills-layout {
         grid-template-columns: 1fr;
         gap: 40px;
+      }
+
+      .skills-categories {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1762,7 +1791,7 @@
         <p class="section-tag fade-up">&lt;Success &amp; Achievements&gt;</p>
         <div class="metrics-bar fade-up stagger-children">
           <div class="metric-item fade-up">
-            <div class="metric-value" data-target="6" data-suffix="+">0</div>
+            <div class="metric-value" data-target="8" data-suffix="+">0</div>
             <div class="metric-label">Completed Projects</div>
           </div>
           <div class="metric-item fade-up">
@@ -1770,11 +1799,11 @@
             <div class="metric-label">Years in Development</div>
           </div>
           <div class="metric-item fade-up">
-            <div class="metric-value" data-target="4" data-suffix="+">0</div>
+            <div class="metric-value" data-target="3" data-suffix="+">0</div>
             <div class="metric-label">Hackathon Awards</div>
           </div>
           <div class="metric-item fade-up">
-            <div class="metric-value" data-target="15" data-suffix="K+">0</div>
+            <div class="metric-value" data-target="25" data-suffix="K+">0</div>
             <div class="metric-label">Data Points Processed</div>
           </div>
         </div>
@@ -1804,7 +1833,7 @@
             </p>
 
             <p class="story-text fade-up">From architecting an Agentic RAG platform at Paytm — achieving 464ms
-              time-to-first-token with Google Gemini 2.5 Flash — to training a 98.66%-accuracy brain tumor classifier
+              time-to-first-token with Groq — to training a 98.66%-accuracy brain tumor classifier
               with Grad-CAM interpretability, I've worked on diverse projects that bridge cutting-edge ML research and
               practical applications. At FusionHawk, I fine-tuned an EfficientNetB0 model for ocular disease
               classification, achieving 0.787 Macro AUC-ROC on clinical images.</p>
@@ -1936,89 +1965,317 @@
           </div>
 
           <div class="skills-categories">
-            <!-- FRONTEND -->
+            <!-- PROGRAMMING LANGUAGES -->
             <div class="skill-category fade-up">
-              <h3>&lt;Frontend&gt;</h3>
-              <div class="skill-icons-grid">
-                <div class="skill-item">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-                    alt="React" loading="lazy">
-                  <span>React</span>
+              <h3>&lt;Programming Languages&gt;</h3>
+              <div class="skill-badges">
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C"
+                    loading="lazy">
+                  <span>C</span>
                 </div>
-                <div class="skill-item">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
-                    alt="Next.js" class="icon-invert" loading="lazy">
-                  <span>Next.js</span>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
+                    alt="C++" loading="lazy">
+                  <span>C++</span>
                 </div>
-                <div class="skill-item">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-plain.svg"
-                    alt="Vite" loading="lazy">
-                  <span>Vite</span>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+                    alt="Python" loading="lazy">
+                  <span>Python</span>
                 </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-                    alt="Tailwind CSS" loading="lazy">
-                  <span>Tailwind</span>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java"
+                    loading="lazy">
+                  <span>Java</span>
                 </div>
-                <div class="skill-item">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-plain.svg"
-                    alt="TypeScript" loading="lazy">
-                  <span>TypeScript</span>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                    alt="HTML" loading="lazy">
+                  <span>HTML</span>
                 </div>
-                <div class="skill-item">
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS"
+                    loading="lazy">
+                  <span>CSS</span>
+                </div>
+                <div class="skill-badge">
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
                     alt="JavaScript" loading="lazy">
                   <span>JavaScript</span>
                 </div>
-                <div class="skill-item">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
-                    alt="Figma" loading="lazy">
-                  <span>Figma</span>
+                <div class="skill-badge">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+                    alt="TypeScript" loading="lazy">
+                  <span>TypeScript</span>
+                </div>
+                <div class="skill-badge">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
+                    alt="SQL" loading="lazy">
+                  <span>SQL</span>
                 </div>
               </div>
             </div>
 
-            <!-- BACKEND & AI -->
+            <!-- FRONTEND DEVELOPER -->
             <div class="skill-category fade-up">
-              <h3>&lt;Backend &amp; AI&gt;</h3>
-              <div class="skill-icons-grid">
-                <div class="skill-item">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-                    alt="Python" loading="lazy">
-                  <span>Python</span>
+              <h3>&lt;Frontend&gt;</h3>
+              <div class="skill-badges">
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                    alt="React.js" loading="lazy">
+                  <span>React.js</span>
                 </div>
-                <div class="skill-item">
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-plain.svg"
+                    alt="Vite" loading="lazy">
+                  <span>Vite</span>
+                </div>
+                <div class="skill-badge">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                    alt="Tailwind CSS" loading="lazy">
+                  <span>Tailwind CSS</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:layout-template.svg?color=%234ade80"
+                    alt="Responsive Web Design" loading="lazy">
+                  <span>Responsive Web Design</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+                    alt="Next.js" class="icon-invert" loading="lazy">
+                  <span>Next.js</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+                    alt="Figma" loading="lazy">
+                  <span>Figma</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg"
+                    alt="Canva" loading="lazy">
+                  <span>Canva</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- BACKEND DEVELOPER -->
+            <div class="skill-category fade-up">
+              <h3>&lt;Backend&gt;</h3>
+              <div class="skill-badges">
+                <div class="skill-badge">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg"
                     alt="FastAPI" loading="lazy">
                   <span>FastAPI</span>
                 </div>
-                <div class="skill-item">
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:webhook.svg?color=%234ade80" alt="REST APIs"
+                    loading="lazy">
+                  <span>REST APIs</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
+                    alt="Node.js" loading="lazy">
+                  <span>Node.js</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg"
+                    alt="Firebase" loading="lazy">
+                  <span>Firebase</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"
+                    alt="Supabase" loading="lazy">
+                  <span>Supabase</span>
+                </div>
+                <div class="skill-badge">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+                    alt="RDBMS" loading="lazy">
+                  <span>RDBMS</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:shield-check.svg?color=%234ade80"
+                    alt="Authentication &amp; Authorization" loading="lazy">
+                  <span>Authentication &amp; Authorization</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg" alt="Testing"
+                    loading="lazy">
+                  <span>Testing</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+                    alt="Containerization" loading="lazy">
+                  <span>Containerization</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                    alt="NoSQL" loading="lazy">
+                  <span>NoSQL</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CS FUNDAMENTALS -->
+            <div class="skill-category fade-up">
+              <h3>&lt;CS&gt;</h3>
+              <div class="skill-badges">
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:binary.svg?color=%234ade80"
+                    alt="Data Structures &amp; Algorithms" loading="lazy">
+                  <span>Data Structures &amp; Algorithms</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:boxes.svg?color=%234ade80" alt="OOPs" loading="lazy">
+                  <span>OOPs</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:workflow.svg?color=%234ade80" alt="System Design"
+                    loading="lazy">
+                  <span>System Design</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
+                    alt="DBMS" loading="lazy">
+                  <span>DBMS</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:network.svg?color=%234ade80" alt="Computer Networks"
+                    loading="lazy">
+                  <span>Computer Networks</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="OS"
+                    loading="lazy">
+                  <span>OS</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- AI/ML ENGINEERING -->
+            <div class="skill-category fade-up">
+              <h3>&lt;AI/ML&gt;</h3>
+              <div class="skill-badges">
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:gauge.svg?color=%234ade80" alt="Model Evaluation"
+                    loading="lazy">
+                  <span>Model Evaluation</span>
+                </div>
+                <div class="skill-badge">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg"
+                    alt="Scikit-learn" loading="lazy">
+                  <span>Scikit-learn</span>
+                </div>
+                <div class="skill-badge">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg"
                     alt="PyTorch" loading="lazy">
                   <span>PyTorch</span>
                 </div>
-                <div class="skill-item">
+                <div class="skill-badge">
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg"
                     alt="TensorFlow" loading="lazy">
                   <span>TensorFlow</span>
                 </div>
-                <div class="skill-item">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
-                    alt="Node.js" loading="lazy">
-                  <span>Node.js</span>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/simple-icons:ollama.svg?color=%234ade80" alt="Ollama"
+                    loading="lazy">
+                  <span>Ollama</span>
                 </div>
-                <div class="skill-item">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg"
-                    alt="Firebase" loading="lazy">
-                  <span>Firebase</span>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:brain-circuit.svg?color=%234ade80" alt="Model Design"
+                    loading="lazy">
+                  <span>Model Design</span>
                 </div>
-                <div class="skill-item">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
-                    alt="Docker" loading="lazy">
-                  <span>Docker</span>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:message-square-code.svg?color=%234ade80" alt="NLP"
+                    loading="lazy">
+                  <span>NLP</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:sliders.svg?color=%234ade80" alt="Hyperparameter Tuning"
+                    loading="lazy">
+                  <span>Hyperparameter Tuning</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- LLM ENGINEERING -->
+            <div class="skill-category fade-up">
+              <h3>&lt;LLM&gt;</h3>
+              <div class="skill-badges">
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/simple-icons:langchain.svg?color=%234ade80"
+                    alt="Langchain &amp; Langgraph" loading="lazy">
+                  <span>Langchain &amp; Langgraph</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:terminal-square.svg?color=%234ade80"
+                    alt="Prompt &amp; Context Engineering" loading="lazy">
+                  <span>Prompt &amp; Context Engineering</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:layers-3.svg?color=%234ade80" alt="Vector Databases"
+                    loading="lazy">
+                  <span>Vector Databases</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:grid.svg?color=%234ade80" alt="Vector Embeddings"
+                    loading="lazy">
+                  <span>Vector Embeddings</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:file-search-2.svg?color=%234ade80"
+                    alt="Retrieval-Augmented Generation (RAG)" loading="lazy">
+                  <span>Retrieval-Augmented Generation (RAG)</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:bot.svg?color=%234ade80"
+                    alt="AI Agents &amp; Orchestration" loading="lazy">
+                  <span>AI Agents &amp; Orchestration</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- DATA ANALYTICS -->
+            <div class="skill-category fade-up">
+              <h3>&lt;Data Analytics&gt;</h3>
+              <div class="skill-badges">
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg"
+                    alt="NumPy" loading="lazy">
+                  <span>Numpy</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg"
+                    alt="Pandas" loading="lazy">
+                  <span>Pandas</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:trending-up.svg?color=%234ade80"
+                    alt="Time-series Forecasting" loading="lazy">
+                  <span>Time-series Forecasting</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:pie-chart.svg?color=%234ade80" alt="Data Visualization"
+                    loading="lazy">
+                  <span>Data Visualization</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:filter.svg?color=%234ade80" alt="Data Cleaning"
+                    loading="lazy">
+                  <span>Data Cleaning</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/lucide:activity.svg?color=%234ade80" alt="Statistics"
+                    loading="lazy">
+                  <span>Statistics</span>
                 </div>
               </div>
             </div>
@@ -2026,34 +2283,54 @@
             <!-- TOOLS & PLATFORMS -->
             <div class="skill-category fade-up">
               <h3>&lt;Tools &amp; Platforms&gt;</h3>
-              <div class="skill-icons-grid">
-                <div class="skill-item">
+              <div class="skill-badges">
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg"
+                    alt="Shell" loading="lazy">
+                  <span>Shell</span>
+                </div>
+                <div class="skill-badge">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
+                    alt="AWS" class="icon-invert" loading="lazy">
+                  <span>Amazon Web Services (AWS)</span>
+                </div>
+                <div class="skill-badge">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git"
                     loading="lazy">
                   <span>Git</span>
                 </div>
-                <div class="skill-item">
+                <div class="skill-badge">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
-                    alt="GitHub" class="icon-invert" loading="lazy">
-                  <span>GitHub</span>
+                    alt="Github" class="icon-invert" loading="lazy">
+                  <span>Github</span>
                 </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
-                    alt="AWS" class="icon-invert" loading="lazy">
-                  <span>AWS</span>
-                </div>
-                <div class="skill-item">
+                <div class="skill-badge">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg"
                     alt="Vercel" class="icon-invert" loading="lazy">
                   <span>Vercel</span>
                 </div>
-                <div class="skill-item">
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/simple-icons:railway.svg?color=%234ade80" alt="Railway"
+                    loading="lazy">
+                  <span>Railway</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://api.iconify.design/simple-icons:render.svg?color=%234ade80" alt="Render"
+                    loading="lazy">
+                  <span>Render</span>
+                </div>
+                <div class="skill-badge">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+                    alt="Docker" loading="lazy">
+                  <span>Docker</span>
+                </div>
+                <div class="skill-badge">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
                     alt="VS Code" loading="lazy">
                   <span>VS Code</span>
                 </div>
-                <div class="skill-item">
+                <div class="skill-badge">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/anaconda/anaconda-original.svg"
                     alt="Anaconda" loading="lazy">
                   <span>Anaconda</span>
@@ -2194,7 +2471,7 @@
                   <div class="edu-institution" style="font-size: 0.875rem;">St. Joseph's Convent School</div>
                   <div class="edu-meta">Non Medical · Faridabad, India</div>
                 </div>
-                <div class="edu-grade">93%</div>
+                <div class="edu-grade">94%</div>
               </div>
               <div class="timeline-date" style="align-self: flex-start;">2009 – 2024</div>
             </div>
