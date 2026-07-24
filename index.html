@@ -1840,21 +1840,24 @@
                 <span class="timeline-date">18/06/2026 – 24/07/2026</span>
               </div>
               <ul class="timeline-bullets">
-                <li>Architected a modular <strong>Agentic Retrieval-Augmented Generation (RAG)</strong> platform using
-                  <strong>FastAPI, LangChain</strong>, and a local <strong>ChromaDB</strong> vector store, chunking and
-                  indexing complex PDF documents up to 2,500 pages (20MB).
+                <li>Architected a modular, provider-agnostic <strong>Advanced Agentic RAG</strong> platform using
+                  <strong>FastAPI, LangChain, React</strong>, and <strong>ChromaDB</strong>, implementing deterministic
+                  tool routing, hybrid retrieval (Dense + BM25 + RRF), cross-encoder reranking, query rewriting, and
+                  document summarization for PDF knowledge bases up to 2,500 pages.
                 </li>
-                <li>Optimized LLM execution with <strong>Google Gemini 2.5 Flash</strong> and Server-Sent Events (SSE),
-                  achieving a <strong>464.5ms Time-To-First-Token</strong> and 748.2ms average total response duration
-                  for grounded answers.</li>
-                <li>Ensured system reliability with 49 automated tests covering metadata filtering and MMR retrieval
-                  strategies, reaching <strong>51.93% code coverage</strong>.</li>
+                <li>Optimized LLM inference with <strong>Groq API</strong> and Server-Sent Events (SSE), achieving
+                  <strong>464.5 ms TTFT</strong> and <strong>748.2 ms average response latency</strong> while generating
+                  grounded, citation-backed responses.
+                </li>
+                <li>Engineered a production-style architecture using Strategy, Factory, and Registry patterns with
+                  pluggable AI providers, alongside an offline retrieval evaluation framework and <strong>400+ automated
+                    tests (69.93% coverage)</strong> to validate retrieval quality and system reliability.</li>
               </ul>
               <div class="timeline-tech">
                 <span>FastAPI</span>
                 <span>LangChain</span>
                 <span>ChromaDB</span>
-                <span>Google Gemini 2.5</span>
+                <span>Groq API</span>
                 <span>SSE</span>
                 <span>Python</span>
                 <span>Testing</span>
